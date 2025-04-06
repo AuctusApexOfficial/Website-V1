@@ -1,0 +1,118 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-sans: var(--font-sans);
+  --font-serif: var(--font-serif);
+}
+
+@layer base {
+  :root {
+    --background: 40 30% 98%;
+    --foreground: 30 10% 15%;
+    --card: 0 0% 100%;
+    --card-foreground: 30 10% 15%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 30 10% 15%;
+    --primary: 40 50% 56%;
+    --primary-foreground: 30 30% 15%;
+    --secondary: 40 20% 92%;
+    --secondary-foreground: 30 10% 20%;
+    --muted: 35 20% 95%;
+    --muted-foreground: 30 10% 40%;
+    --accent: 35 30% 90%;
+    --accent-foreground: 30 10% 20%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 40 30% 98%;
+    --border: 30 15% 90%;
+    --input: 30 15% 90%;
+    --ring: 40 50% 56%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 30 10% 10%;
+    --foreground: 40 20% 90%;
+    --card: 30 10% 10%;
+    --card-foreground: 40 20% 90%;
+    --popover: 30 10% 10%;
+    --popover-foreground: 40 20% 90%;
+    --primary: 40 50% 56%;
+    --primary-foreground: 30 30% 15%;
+    --secondary: 35 10% 15%;
+    --secondary-foreground: 40 20% 90%;
+    --muted: 35 10% 15%;
+    --muted-foreground: 30 10% 60%;
+    --accent: 35 10% 15%;
+    --accent-foreground: 40 20% 90%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 40 20% 90%;
+    --border: 35 10% 15%;
+    --input: 35 10% 15%;
+    --ring: 40 50% 56%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+/* Parallax effect styles */
+.will-change-transform {
+  will-change: transform;
+}
+
+.content-overlay {
+  transition: transform 0.05s ease-out;
+  will-change: transform;
+}
+
+/* Smooth scrolling for the entire page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+html {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Smooth transition for content overlay */
+.content-overlay {
+  transition: margin-top 0.1s ease-out;
+}
+
+/* Process steps hover effect */
+.group:hover {
+  z-index: 20;
+  position: relative;
+}
+
+/* Set a fixed height for the process step cards */
+.process-step {
+  min-height: 120px;
+}
+
+/* Expanded card should have a higher z-index and more dramatic transform */
+.process-step-hover {
+  transform: scale(1.1);
+  z-index: 30;
+  box-shadow: 0 10px 25px -5px rgba(184, 140, 63, 0.1), 0 8px 10px -6px rgba(184, 140, 63, 0.1);
+}
+
