@@ -25,10 +25,13 @@ export const metadata: Metadata = {
   generator: "v0.dev",
   icons: {
     icon: [
-      { url: "/favicon.ico", sizes: "32x32" },
-      { url: "/icon.png", sizes: "192x192" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-192x192.png", sizes: "192x192", type: "image/png" },
+      { url: "/favicon-512x512.png", sizes: "512x512", type: "image/png" },
+      { url: "/favicon.ico", sizes: "any" },
     ],
-    apple: "/apple-icon.png",
+    apple: "/apple-touch-icon.png",
     shortcut: "/favicon.ico",
   },
   manifest: "/site.webmanifest",
@@ -58,7 +61,6 @@ export const metadata: Metadata = {
   },
 }
 
-// Make sure the layout is properly set up to handle the loading state
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -72,7 +74,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://runtime-api.voiceflow.com" />
         <link rel="preconnect" href="https://res.cloudinary.com" crossOrigin="anonymous" />
 
-        {/* Add preload for the fonts to prevent layout shifts */}
+        {/* Font preloads */}
         <link
           rel="preload"
           href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
@@ -84,13 +86,16 @@ export default function RootLayout({
           as="style"
         />
 
-        {/* Keep existing links */}
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="apple-touch-icon" href="/apple-icon.png" />
+        {/* Favicons */}
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png" />
+        <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512x512.png" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="shortcut icon" href="/favicon.ico" />
         <link rel="manifest" href="/site.webmanifest" />
       </head>
       <body className={`${inter.variable} ${playfair.variable} font-sans`}>
-        {/* Script to load Voiceflow and handle positioning */}
         <Script
           id="voiceflow-widget"
           strategy="afterInteractive"
@@ -101,23 +106,16 @@ export default function RootLayout({
                 var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
                 v.onload = function() {
                   try {
-                    // Initialize the Voiceflow chat widget
                     window.voiceflowWidget = window.voiceflow.chat.load({
                       verify: { projectID: '67f6bd5f2cdeec21050d450c' },
                       url: 'https://general-runtime.voiceflow.com',
                       versionID: '67f6bd5f2cdeec21050d450d',
-                      voice: {
-                        url: "https://runtime-api.voiceflow.com"
-                      }
+                      voice: { url: "https://runtime-api.voiceflow.com" }
                     });
-                    
-                    // Create a simple function to restart the chat
+
                     window.startNewChat = function() {
                       try {
-                        // Close the current chat
                         window.voiceflow.chat.close();
-                        
-                        // Wait a moment and reopen
                         setTimeout(function() {
                           window.voiceflow.chat.open();
                         }, 300);
@@ -125,29 +123,20 @@ export default function RootLayout({
                         console.error('Error restarting chat:', e);
                       }
                     };
-                    
-                    // Add CSS to fix positioning and hide the lower chatbox
+
                     setTimeout(function() {
-                      // Create a style element
                       var style = document.createElement('style');
                       style.textContent = \`
-                        /* Hide the second chat button (if any) */
                         .vfrc-button:nth-of-type(2) {
                           display: none !important;
                         }
-                        
-                        /* Hide the second chat container (if any) */
                         .vfrc-chat:nth-of-type(2) {
                           display: none !important;
                         }
-                        
-                        /* Position the first chat button at the bottom */
                         .vfrc-button:nth-of-type(1) {
                           bottom: 20px !important;
                           top: auto !important;
                         }
-                        
-                        /* Ensure proper z-index */
                         .vfrc-button, .vfrc-chat {
                           z-index: 9999 !important;
                         }
@@ -168,7 +157,6 @@ export default function RootLayout({
             `,
           }}
         />
-
         <LanguageProvider>
           <RootLayoutContent>{children}</RootLayoutContent>
           <Analytics />
@@ -177,6 +165,3 @@ export default function RootLayout({
     </html>
   )
 }
-
-
-import './globals.css'
