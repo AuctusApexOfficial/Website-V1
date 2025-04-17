@@ -1,0 +1,72 @@
+/* Define aspect ratios for commonly used containers */
+.aspect-16-9 {
+  aspect-ratio: 16 / 9;
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
+.aspect-4-3 {
+  aspect-ratio: 4 / 3;
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
+.aspect-1-1 {
+  aspect-ratio: 1 / 1;
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
+/* Prevent font-based layout shifts */
+html {
+  font-size: 16px;
+}
+
+/* Force text to wrap in a consistent way */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+/* Ensure images maintain aspect ratio and don't cause layout shifts */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Add default height to Skeleton loaders */
+.skeleton-loader {
+  min-height: 1.5rem;
+}
+
+/* Fix CLS caused by button and interactive elements changing dimensions on hover/focus */
+button,
+.button,
+a.button {
+  position: relative;
+}
+
+button::after,
+.button::after,
+a.button::after {
+  content: attr(data-text);
+  display: block;
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
+}
+
+/* Prevent layout shifts from font loading */
+.font-serif,
+.font-sans {
+  font-display: swap;
+}
