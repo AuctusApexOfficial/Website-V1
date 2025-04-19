@@ -94,6 +94,20 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="shortcut icon" href="/favicon.ico" />
         <link rel="manifest" href="/site.webmanifest" />
+
+        {/* ✅ JSON-LD for Organization + Logo */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "Auctus Apex",
+              url: "https://auctusapex.it",
+              logo: "https://auctusapex.it/favicon-512x512.png",
+            }),
+          }}
+        />
       </head>
       <body className={`${inter.variable} ${playfair.variable} font-sans`}>
         <Script
