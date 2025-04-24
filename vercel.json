@@ -1,8 +1,0 @@
-{
-  "rewrites": [
-    {
-      "source": "/questionnaire(/.*)?",
-      "destination": "https://questionnaire-official.vercel.app$1"
-    }
-  ]
-}
