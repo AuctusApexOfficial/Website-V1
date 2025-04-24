@@ -1,8 +1,9 @@
 {
   "rewrites": [
     {
-      "source": "/questionnaire/:path*",
-      "destination": "https://questionnaire-official.vercel.app/:path*"
+      "source": "/questionnaire",
+      "destination": "https://questionnaire-official.vercel.app"
     }
   ]
 }
+
