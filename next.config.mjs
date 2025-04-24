@@ -9,12 +9,11 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  async redirects() {
+  async rewrites() {
     return [
       {
         source: '/questionnaire',
-        destination: 'https://questionnaire-official.vercel.app', // URL of your questionnaire on Vercel
-        permanent: true, // This is a 301 permanent redirect
+        destination: 'https://questionnaire-official.vercel.app/', // URL of your questionnaire on Vercel
       },
     ];
   },
