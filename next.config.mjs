@@ -13,7 +13,7 @@ const nextConfig = {
     return [
       {
         source: '/questionnaire',
-        destination: 'https://questionnaire-official.vercel.app/', // URL of your questionnaire on Vercel
+        destination: 'https://auctusapex.com',
       },
     ];
   },
