@@ -121,9 +121,9 @@ export default function RootLayout({
                 v.onload = function() {
                   try {
                     window.voiceflowWidget = window.voiceflow.chat.load({
-                      verify: { projectID: '687eead224ac751325ff799c' },
+                      verify: { projectID: '688001607a329287d00bccec' },
                       url: 'https://general-runtime.voiceflow.com',
-                      versionID: '687eead224ac751325ff799d',
+                      versionID: '688001607a329287d00bcced',
                       voice: { url: "https://runtime-api.voiceflow.com" }
                     });
 
