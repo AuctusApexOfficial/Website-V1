@@ -11,7 +11,7 @@ export default function BookingClientPage() {
   const [isLoading, setIsLoading] = useState(false)
 
   // Update the Calendly link to ensure it's correct
-  const calendlyLink = "https://calendly.com/auctusapex/15-minute-meeting"
+  const calendlyLink = "https://cal.com/auctusapex/consultation"
 
   // Make sure the openCalendly function works properly
   const openCalendly = () => {
